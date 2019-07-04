@@ -1,0 +1,49 @@
+새로운 smart contract를 사용하기 위해서는, 콘솔에서 contract 클래스를 생성해야 함
+1. 원하는 contract.sol (현재는 solidity를 사용 중) 파일을 compile
+  i. 현재, compile은 https://remix.ethereum.org를 통해 수행
+2. compile을 통해, ABI와 Bytecode를 얻음
+3. 획득한 ABI를 활용하여, 콘솔 상에 contract 클래스 생성
+  i. newCont = eth.contract( ABI 내용 )
+4 contract 객체(Token)를 실행하기 위해서는, 생성한 contract 클래스를 활용하여 객체를 생성
+  i. newInst = newCont.new( constructor parameters, { from: "송신자 주소", data: "0x + (2)에서 획득한 Bytecode의 object 값", gas: 수수료 } )
+  ii. constructor parameters는 ABI에 정의된 contructor 규약에 맞추어 parameter 전달
+  iii. Error가 발생할 수도 있는데, 아마 unlock이 필요하기 때문
+    iii-1. 객체 생성 및 실행 또한 transaction이기 때문에, transaction용 서명이 필요
+    iii-2. 따라서, 송신자에 대하여 unlock 요구
+    iii-3. unlock하는 방법: personal.unlockAccount("unlock 대상 주소", "password", unlock 유지 시간 초 단위)
+          ex. personal.unlockAccount(eth.accounts[0], "", 3600)
+  * Coin과 Token은 별개이지만, 같은 주소를 사용
+
+
+contract 객체의 멤버 변수 조회
+- newInst.balaceOf("멤버 주소")
+
+
+contract 객체의 멤버 함수 실행
+  ex. newInst.transfer("수신 주소", 이체할 금액, {from: "송신 주소", gas: 수수료})
+- 사실상 transaction 호출이기 때문에, 호출자가 있어야 함
+
+
+지금까지 한 것을 ERC(규격)토큰이라 부름
+- Contract interface는 ERC20 토큰 표준에 맞춤
+- ERC20 토큰을 지원하는 지갑 APP들은 그 규격에 맞춰 balanceOf 등을 호출
+- 따라서, ERC20 규격으로 token contract를 만들어 실행하면 그것이 하나의 token이 되는 것
+
+
+ICO란,
+- 좁은 의미로 token을 생성하여 ethereum을 받고 파는 것
+- token의 종류
+  - Utility Token(token economy): 서비스용 token
+  - Asset Token: 다른 자산을 나타내는 token
+  - Security Token: 주식으로 사용되는 token
+
+
+Muliti Signature Wallet
+- gatekeeper의 승인이 필요
+- 구성
+  - contract: 인가 서명까지 확인하고 이체하는 contract
+  - 호출 console: 이체 요청
+  - gatekeeper javascript: event를 받아서 자동으로 승인해주는 script
+
+
+minig하는 과정이 지속되는 원인으로 block 등이 생성이 어려운 경우, $geth --dev console 통해 개발자 모드로 접근
