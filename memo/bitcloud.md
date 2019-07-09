@@ -1,6 +1,8 @@
 # 비트클라우드 백서
 
-비트코인과 이더리움 백서 합본 한글판인 http://s.kwma.kr/pdf/BitCloud/bitcloudwpkor_p43.pdf를 읽고 요약 정리
+비트코인 백서 요약 정리
+* 한글판(PDF): http://s.kwma.kr/pdf/BitCloud/bitcloudwpkor_p43.pdf
+* 영문판(PDF): https://bitcoin.org/bitcoin.pdf
 
 ---
 ## 비트코인: 개인간 전자화폐 시스템 (사토시 나카모토)
