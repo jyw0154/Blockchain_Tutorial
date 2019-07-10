@@ -1,0 +1,24 @@
+비트코인의 transaction 종류는 2가지
+- 이체
+- 채굴
+
+
+
+(m.t.) bitcoin에서는 '누가 얼마를 가졌다'라는 표현 보다, '누가 얼마를 받은 기록들이 저장됐다'라는 표현이 적절
+
+
+
+bitcoin의 transaction이 지연되는 이유는
+- confirm
+- 한 block에 실을 수 있는 transaction의 크기가 제한 됨
+  - sendtoaddress을 명령할 시 transaction 주소가 생성 됨
+  - 이체를 수행하기 위해선, transaction을 block에 올려줘야 함
+  - block에 올라가지 못하면, 계속 대기
+  - 수수료를 높게 잡아 transaction을 block에 올려주도록 유도
+  - 책정한 confirm의 수 만큼, block에 연속적으로 올라간다면(confirm)
+
+
+RPC 문제가 발생하였을 때, 현재 bitcoin server가 2개 이상 돌아가는 중이라서 그런 것
+이럴때는
+- ps aux | grep bitcoin 후, 중복되어 실행 중인 bitcoin process를 죽임
+
