@@ -184,11 +184,28 @@ P2P 시스템에서 중심부 시간에 의존하지 않은 상태로 타임스�
 * 시간이 흐름에 따라 HW 속도 증가와 노드들의 참여도 증가율을 보상하기 위해서, <b>작업증명의 난이도는 시간당 평균 블록 생성 수를 기준으로 하는 이동평균 타깃으로 결정</b>
 * 블록이 너무 빠르게 생성되면 난이도는 급증함
 
+
+#### 역주
+* (m.t.) 현재 비트코인의 PoW에 문제가 없다는 것은 아니지만, 비트코인은 가치가 많이 올랐기 때문에, 참여자들이 자신들이 가진 비트코인의 가치를 떨어뜨리기 원하지 않는 한, 과반수 이상이 현 합의를 유지할 것임
+* (m.t.) <b>동시에 둘 이상의 block이 생성될 수도 있다.</b> 물리적으로 거리가 먼 노드들이 거의 동시에 nonce 값을 찾아, 모두가 동일하게 갖고 있던 chain의 마지막 블록에 각각 새로운 블록을 추가하며 인접 노드들에게 전파하면, 앞서 말한 것처럼 둘 이상의 block으로 서로 다른 chain이 생성될 수 있다. 이러한 상황을 <b>블록체인 분기</b>라고 부르며, <b>추후 가장 긴 chain만이 가장 많은 작업증명에 노력이 투입된 것으로 인정 받아 살아남는다.</b>
+
 * Promblems with Proof of Work
-1. 
-2. 
-3. 
-4. 
+1. Wasted energy
+2. Vulnerable to ASICs and centralization
+3. Lacks 'finality'
+4. No clearly defined validator set
+
+* 이와 같은 PoW의 문제점을 극복하기 위한 하나의 알고리즘으로 <b>PoS(Proof of Stake)</b>가 존재하며, 추후 이더리움 정리할 때 다시 살펴보고, 현재는 간단하게 몇 가지 특징만 알아보자.
+1. <b>PoS에서는</b> 채굴자(Miner) 대신 <b>검증인(Validator) 용어를 사용</b>
+2. 검증인이란, <b>블록을 생성하기 위해 참가하는 사람</b>을 의미
+3. 해시파워가 많이 필요하지 않아 <b>경제적</b>
+4. PoW와 다르게 채굴기와 같은 <b>고성능 HW가 필요하지 않음</b>
+5. 참여한 노드들이 <b>이자</b>를 받으려고 <b>코인을 묶어 두려</b>하기 때문에, 시중 <b>코인의 유통량 감소</b>로 이어질 수 있음
+6. <b>코인을 많이 보유한 사람이 너무 강한 권력</b>을 갖게 됨
+7. <b>네트워크의 모든 노드들이 검증</b>을 하기 때문에 속도면에서 뒤쳐질 수 있음
+8. 2세대 PoS로서 <b><a href="https://ehtersear.ch/t/latest-casper-basics-tear-it-apatr/151">Ethereum's Casper</a></b>가 존재
+* <a href="https://www.youtube.com/watch?v=XXPY6pMDVYE&list=PL9exlAiBT5QkxPzOO1d83FBW4Wjtfqwt&index=2">Incentives in Ethereums Hybrid Casper Protocol</a>
+9. <b>Ethereum's Casper에서는 검증인이 되기 위해, 일정량 이상의 이더리움을 예치(deposit)해야 함</b>
 
 
 #### Adam Back's Hashcash
